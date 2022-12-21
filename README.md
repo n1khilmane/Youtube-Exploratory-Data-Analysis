@@ -23,7 +23,40 @@ We need to explore data before analyzing it. First, we performed data cleaning. 
 
 ## High level design overview
 
-![diagram](https://github.com/n1khilmane/Clubroom/blob/main/images/arch.png)
+![diagram](https://github.com/n1khilmane/Youtube-Exploratory-Data-Analysis/blob/main/images/architecture.png)
+
+## Building A Data Analysis Module
+
+Using Pyspark and Elasticsearch, we have built a data analysis module that gives interesting analysis and an interactive dashboard to view and understand custom data trends and visualizations.
+
+1. Ingesting the acquired data:
+The data that is obtained from the youtube api. This data is converted into CSV format and read into Pyspark for further processing.
+
+2. Processing the data using Pyspark:
+The appropriate preprocessing is performed on the ingested data before it is loaded into a Pyspark data frame. The data is ready to be given to Elastic search after it is fully processed and available in Pyspark.
+
+3. Indexing data into Elasticsearch:
+After processing, the data is added to the Elasticsearch index. The Elastic ES-Hadoop library, an open-source, standalone, self-contained, tiny library that enables Hadoop operations to connect with Elasticsearch, is used to integrate Elasticsearch and Pyspark. In the form of an RDD (Resilient Distributed Dataset) (or Pair RDD, to be precise), Elasticsearch-Hadoop offers direct interaction between Elasticsearch and Apache Spark and can read data from Elasticsearch.
+
+4. Visualizing the data in Kibana:
+Finally, we use Kibana to query data from the Elasticsearch index and create an interactive dashboard to visualize the data and show metrics like categories, top liked channels, top disliked channels, etc.
+
+## Dashboard
+
+![diagram](https://github.com/n1khilmane/Youtube-Exploratory-Data-Analysis/blob/main/images/dashboard.png)
+
+![diagram](https://github.com/n1khilmane/Youtube-Exploratory-Data-Analysis/blob/main/images/dashboard1.png)
+
+## Lessons learned
+1) How to read ever-updated data on a real time basis.
+2) How to process and condense huge amounts of data quickly using spark.
+3) Use ES Hadoop to push data to ElasticSearch
+4) Utilize Elastic Search for quick computations and presentation on Kibana Dashboards.
+
+## Future Work
+1) Data for more countries can be added
+2) Paid YouTube API can be used for realtime limitless feed of data
+3) The data can be fetched in real time from the Youtube API using Kafka and sent to a topic from where Spark can read the same as an input.
 
 
 
